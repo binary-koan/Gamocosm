@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151106024157) do
   create_table "minecrafts", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.uuid     "server_id",                                    null: false
+    t.integer  "server_id",                                    null: false
     t.string   "flavour",                                      null: false
     t.string   "mcsw_password",                                null: false
     t.boolean  "autoshutdown_enabled",         default: false, null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20151106024157) do
   add_index "minecrafts", ["server_id"], name: "index_minecrafts_on_server_id", unique: true, using: :btree
 
   create_table "scheduled_tasks", force: :cascade do |t|
-    t.uuid    "server_id", null: false
+    t.integer "server_id", null: false
     t.integer "partition", null: false
     t.string  "action",    null: false
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20151106024157) do
   add_index "scheduled_tasks", ["partition"], name: "index_scheduled_tasks_on_partition", using: :btree
 
   create_table "server_logs", force: :cascade do |t|
-    t.uuid     "server_id",              null: false
+    t.integer  "server_id",              null: false
     t.text     "message",                null: false
     t.string   "debuginfo",  limit: 255, null: false
     t.datetime "created_at"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20151106024157) do
 
   add_index "server_logs", ["server_id"], name: "index_server_logs_on_server_id", using: :btree
 
-  create_table "servers", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "servers", force: :cascade do |t|
     t.integer  "user_id",                                       null: false
     t.string   "name",               limit: 255,                null: false
     t.datetime "created_at"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20151106024157) do
   add_index "servers", ["user_id"], name: "index_servers_on_user_id", using: :btree
 
   create_table "servers_users", force: :cascade do |t|
-    t.uuid    "server_id"
+    t.integer "server_id"
     t.integer "user_id"
   end
 
