@@ -9,6 +9,7 @@ end
 
 class SetupServerWorker
   include Sidekiq::Worker
+  include SSHKit::DSL
   sidekiq_options retry: 0
 
   SYSTEM_PACKAGES = [
