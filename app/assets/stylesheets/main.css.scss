@@ -87,6 +87,26 @@ img.img-thumbnail {
 	}
 }
 
+.form-group.integer,
+.form-group.string,
+.form-group.text {
+	label {
+		padding-left: $padding-base-horizontal;
+	}
+
+	label + div > .form-control {
+		$label-space: $font-size-base + $padding-base-vertical + $padding-large-vertical;
+
+		margin-top: -$label-space;
+		padding-top: $label-space;
+		height: auto;
+	}
+}
+
+.form-group + .help-block {
+	margin-top: -$padding-base-vertical;
+}
+
 .checkbox-pretty {
 	&:hover {
 		cursor: pointer;
