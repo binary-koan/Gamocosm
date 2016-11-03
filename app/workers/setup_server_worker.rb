@@ -30,6 +30,7 @@ class SetupServerWorker
   def perform(server_id, times = 0)
     server = Server.find(server_id)
     user = server.user
+    server.log("Setting up server ...")
     begin
       if !server.remote.exists?
         server.log('Error starting server; remote_id is nil. Aborting')
