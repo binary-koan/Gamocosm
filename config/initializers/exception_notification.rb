@@ -19,13 +19,13 @@ ExceptionNotification.configure do |config|
   # Notifiers =================================================================
 
   # Email notifier sends notifications by email.
-  if Rails.env.production?
-    config.add_notifier :email, {
-      email_prefix: '[Gamocosm Badness] ',
-      sender_address: 'Gamocosm no-reply <no-reply@gamocosm.com>',
-      exception_recipients: ENV['DEVELOPER_EMAILS'].split(',')
-    }
-  end
+  # if Rails.env.production?
+  #   config.add_notifier :email, {
+  #     email_prefix: '[Gamocosm Badness] ',
+  #     sender_address: 'Gamocosm no-reply <no-reply@gamocosm.com>',
+  #     exception_recipients: ENV['DEVELOPER_EMAILS'].split(',')
+  #   }
+  # end
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {
