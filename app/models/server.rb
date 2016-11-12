@@ -184,6 +184,7 @@ class Server < ActiveRecord::Base
     if action.error?
       return action
     end
+    log("Scheduling server start ...")
     WaitForStartingServerWorker.perform_in(32.seconds, id, action.id)
     self.update_columns(pending_operation: 'starting')
     return nil
